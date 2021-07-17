@@ -12,7 +12,7 @@ class PostsAdapter(var post_list: List<Posts>) : RecyclerView.Adapter<postViewHo
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): postViewHolder {
 
         var itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.post_list_item, parent, true)
+            .inflate(R.layout.post_list_item, parent, false)
         return postViewHolder(itemView)
     }
 

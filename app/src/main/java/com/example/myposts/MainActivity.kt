@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         getPosts()
     }
     fun getPosts(){
+        //make Retrofit Builder Object
         var rvPosts=findViewById<RecyclerView>(R.id.rvPosts)
         val retrofit = ApiClient.buildApiClient(ApiInterface::class.java)
 
