@@ -2,7 +2,6 @@ package com.example.myposts
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.LinearLayout
 
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,18 +28,19 @@ class MainActivity : AppCompatActivity() {
         request.enqueue(object : Callback<List<Posts>?> {
             override fun onResponse(call: Call<List<Posts>?>, response: Response<List<Posts>?>) {
                 if (response.isSuccessful){
+                    //? is null and is used when the server has lend no request
                     var posts=response.body()!!
-                    var postsAdapter=PostsAdapter(posts)
+                    var postsAdapter=PostsAdapter(posts,baseContext)
                     rvPosts.adapter=postsAdapter
                     rvPosts.layoutManager=LinearLayoutManager(baseContext)
-
-
-
                 }
             }
 
             override fun onFailure(call: Call<List<Posts>?>, t: Throwable) {
-                Toast.makeText(baseContext,"sorry Page not found ",Toast.LENGTH_SHORT).show()
+               // Throwable is an object that holds the error
+                //Read on suspend functions
+                Toast.makeText(baseContext,t.message,Toast.LENGTH_SHORT).show()
+
             }
         })
 
