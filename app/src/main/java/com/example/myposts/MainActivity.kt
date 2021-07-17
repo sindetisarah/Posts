@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
 
 
         val request = retrofit.getPosts()
+        //enque function triggers the call and makes it on a separate thread
         request.enqueue(object : Callback<List<Posts>?> {
             override fun onResponse(call: Call<List<Posts>?>, response: Response<List<Posts>?>) {
                 if (response.isSuccessful){
